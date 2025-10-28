@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { Header } from '../../../components/Header';
+import { FormHelper } from '../../../components/FormHelper';
 
 export const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -32,10 +33,18 @@ export const Login = () => {
       <Header />
       <div className="min-h-[calc(100vh-64px)] flex items-center justify-center p-6 bg-gradient-to-br from-brand-50 to-accent-50">
         <div className="bg-white rounded-3xl shadow-soft-xl overflow-hidden w-full max-w-5xl grid grid-cols-1 md:grid-cols-2">
-          <aside className="hidden md:flex items-center justify-center p-10 bg-gradient-to-br from-accent-500 to-accent-300 text-white">
-            <div className="max-w-sm">
-              <h2 className="text-3xl font-bold mb-4">Bienvenido de nuevo</h2>
-              <p className="text-sm opacity-90">Accede para ver tu perfil, guías rápidas y recursos.</p>
+          <aside className="hidden md:flex items-stretch justify-center p-6 bg-gradient-to-br from-ocean-600 to-ocean-400 text-white">
+            <div className="max-w-sm w-full">
+              <h2 className="text-3xl font-bold mb-2">Bienvenido</h2>
+              <p className="text-sm opacity-95 mb-4">Accede para ver tu panel y las guías rápidas.</p>
+              <FormHelper
+                title="Pasos rápidos"
+                items={[
+                  { title: 'Introduce tu email', detail: 'Usa el email con el que te registraste.' },
+                  { title: 'Introduce tu contraseña', detail: 'La contraseña es sensible a mayúsculas.' },
+                  { title: 'Problemas?', detail: 'Usa el enlace de recuperación si olvidaste la contraseña.' }
+                ]}
+              />
             </div>
           </aside>
 
@@ -45,7 +54,7 @@ export const Login = () => {
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                  <label className="block text-sm font-medium text-gray-800 mb-2">Email</label>
                   <input
                     type="email"
                     name="email"
@@ -58,7 +67,7 @@ export const Login = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Contraseña</label>
+                  <label className="block text-sm font-medium text-gray-800 mb-2">Contraseña</label>
                   <input
                     type="password"
                     name="password"
@@ -81,7 +90,7 @@ export const Login = () => {
                 </button>
               </form>
 
-              <p className="mt-6 text-center text-sm text-gray-600">¿No tienes cuenta?{' '}
+              <p className="mt-6 text-center text-sm text-gray-700">¿No tienes cuenta?{' '}
                 <Link to="/register" className="text-accent-700 font-medium">Regístrate aquí</Link>
               </p>
             </div>
